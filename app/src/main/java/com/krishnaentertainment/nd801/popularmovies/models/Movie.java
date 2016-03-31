@@ -3,39 +3,30 @@ package com.krishnaentertainment.nd801.popularmovies.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.List;
+import java.util.Date;
 
-/**
- * Created by BK on 30-03-2016.
- */
 public class Movie implements Parcelable {
 
     public Integer id;
-    public Boolean adult;
-    public String backdrop_path;
-    public List<Integer> genres_ids;
-    public String original_title;
-    public String overview;
-    public Double popularity;
-    public String poster_path;
-    public String release_date;
     public String title;
-    public Double vote_average;
-    public Integer vote_count;
+    public String posterPath;
+    public String backdropPath;
+    public String overview;
+    public Date releaseDate;
+    public Double popularity;
+    public Double voteAverage;
+    public Integer voteCount;
 
     protected Movie(Parcel in) {
         id = in.readInt();
-        adult = in.readByte() == 1;
-        backdrop_path = in.readString();
-        in.readList(genres_ids, Integer.class.getClassLoader());
-        original_title = in.readString();
-        overview = in.readString();
-        popularity = in.readDouble();
-        poster_path = in.readString();
-        release_date = in.readString();
         title = in.readString();
-        vote_average = in.readDouble();
-        vote_count = in.readInt();
+        posterPath = in.readString();
+        backdropPath = in.readString();
+        overview = in.readString();
+        releaseDate.setTime(in.readLong());
+        popularity = in.readDouble();
+        voteAverage = in.readDouble();
+        voteCount = in.readInt();
     }
 
     public static final Creator<Movie> CREATOR = new Creator<Movie>() {
@@ -58,16 +49,13 @@ public class Movie implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeByte((byte) (adult ? 1 : 0));
-        dest.writeString(backdrop_path);
-        dest.writeList(genres_ids);
-        dest.writeString(original_title);
-        dest.writeString(overview);
-        dest.writeDouble(popularity);
-        dest.writeString(poster_path);
-        dest.writeString(release_date);
         dest.writeString(title);
-        dest.writeDouble(vote_average);
-        dest.writeInt(vote_count);
+        dest.writeString(posterPath);
+        dest.writeString(backdropPath);
+        dest.writeString(overview);
+        dest.writeLong(releaseDate.getTime());
+        dest.writeDouble(popularity);
+        dest.writeDouble(voteAverage);
+        dest.writeInt(voteCount);
     }
 }

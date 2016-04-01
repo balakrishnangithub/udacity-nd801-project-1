@@ -1,7 +1,9 @@
-package com.krishnaentertainment.nd801.popularmovies;
+package com.krishnaentertainment.nd801.popularmovies.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.krishnaentertainment.nd801.popularmovies.R;
 
 public class MoviesActivity extends AppCompatActivity {
 

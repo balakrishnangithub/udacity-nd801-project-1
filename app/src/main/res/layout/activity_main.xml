@@ -9,8 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activities.MainActivity">
 
-    <TextView
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.krishnaentertainment.nd801.popularmovies.fragments.MoviesGalleryFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        tools:layout="@layout/fragment_movies_gallery" />
 </RelativeLayout>

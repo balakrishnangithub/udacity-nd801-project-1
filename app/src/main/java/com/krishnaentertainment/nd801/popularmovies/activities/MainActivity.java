@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.krishnaentertainment.nd801.popularmovies.R;
 
-public class MoviesActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

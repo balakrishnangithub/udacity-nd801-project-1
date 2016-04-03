@@ -22,4 +22,6 @@ public class GlobalConstants {
     public static final String TMDB_PARAM_POPULARITY = "popularity";
     public static final String TMDB_PARAM_VOTE_AVERAGE = "vote_average";
     public static final String TMDB_PARAM_VOTE_COUNT = "vote_count";
+
+    public static final String TMDB_MOVIE_RESULTS = "results";
 }

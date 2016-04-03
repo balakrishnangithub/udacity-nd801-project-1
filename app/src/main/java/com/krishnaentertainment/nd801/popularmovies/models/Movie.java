@@ -17,6 +17,9 @@ public class Movie implements Parcelable {
     public Double voteAverage;
     public Integer voteCount;
 
+    public Movie() {
+    }
+
     protected Movie(Parcel in) {
         id = in.readInt();
         title = in.readString();

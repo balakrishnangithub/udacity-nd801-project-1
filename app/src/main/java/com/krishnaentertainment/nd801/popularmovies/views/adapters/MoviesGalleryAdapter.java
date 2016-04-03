@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.ViewHolder> {
+public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return null;

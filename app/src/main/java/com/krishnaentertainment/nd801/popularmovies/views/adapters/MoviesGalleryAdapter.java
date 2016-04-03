@@ -13,15 +13,27 @@ import com.krishnaentertainment.nd801.popularmovies.models.GlobalConstants;
 import com.krishnaentertainment.nd801.popularmovies.models.Movie;
 import com.krishnaentertainment.nd801.popularmovies.utils.UriUtils;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdapter.ViewHolder> {
     private Context mContext;
-    private List<Movie> mMoviesList;
+    private ArrayList<Movie> mMoviesList;
 
-    public MoviesGalleryAdapter(Context mContext, List<Movie> mMoviesList) {
+    public interface AdapterCallback {
+        void onAdapterItemClick(Movie movie, NetworkImageView posterImage, View v);
+    }
+
+    public MoviesGalleryAdapter(Context mContext) {
         this.mContext = mContext;
-        this.mMoviesList = mMoviesList;
+    }
+
+    public void set(ArrayList<Movie> movies) {
+        mMoviesList = movies;
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<Movie> getMoviesList() {
+        return mMoviesList;
     }
 
     @Override
@@ -36,21 +48,27 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie movie = mMoviesList.get(position);
         holder.posterImage.setImageUrl(
-                UriUtils.buildTMDBImageUrl(GlobalConstants.TMDB_SMALL_POSTER, movie.posterPath),
+                UriUtils.buildTMDBImageUrl(GlobalConstants.TMDB_LARGE_POSTER, movie.posterPath),
                 VolleySingleton.getInstance(mContext).getImageLoader());
     }
 
     @Override
     public int getItemCount() {
-        return mMoviesList.size();
+        return mMoviesList != null ? mMoviesList.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public NetworkImageView posterImage;
 
         public ViewHolder(View view) {
             super(view);
             posterImage = (NetworkImageView) view.findViewById(R.id.gallery_poster_item);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Movie movie = mMoviesList.get(getLayoutPosition());
+            ((AdapterCallback) mContext).onAdapterItemClick(movie, posterImage, v);
         }
     }
 }

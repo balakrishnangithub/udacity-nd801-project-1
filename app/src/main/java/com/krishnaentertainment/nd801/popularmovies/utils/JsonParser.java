@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class JsonParser {
-    public static ArrayList<Movie> parseMoviesJson(String jsonString) {
+    public static ArrayList<Movie> parseMoviesList(String jsonString) {
         ArrayList<Movie> moviesList = new ArrayList<>();
         if (jsonString == null)
             return moviesList;

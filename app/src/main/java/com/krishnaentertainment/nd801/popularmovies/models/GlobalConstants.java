@@ -1,9 +1,6 @@
 package com.krishnaentertainment.nd801.popularmovies.models;
 
-import com.krishnaentertainment.nd801.popularmovies.BuildConfig;
-
 public class GlobalConstants {
-    public static final String TMDB_API_KEY = BuildConfig.TMDB_API_KEY;
     public static final String TMDB_MOVIE_BASE_URL = "http://api.themoviedb.org/3/discover/movie";
     public static final String TMDB_IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
     public static final String TMDB_SORT_DESC = ".desc";
@@ -15,6 +12,7 @@ public class GlobalConstants {
     public static final String TMDB_PARAM_PAGE = "page";
     public static final String TMDB_PARAM_API_KEY = "api_key";
 
+    public static final String TMDB_PARAM_SORT_BY = "sort_by";
     public static final String TMDB_PARAM_ID = "id";
     public static final String TMDB_PARAM_TITLE = "title";
     public static final String TMDB_PARAM_POSTER_PATH = "poster_path";

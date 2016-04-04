@@ -9,4 +9,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activities.MovieDetailActivity">
 
+    <fragment
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:name="com.krishnaentertainment.nd801.popularmovies.fragments.MovieDetailFragment"
+        android:id="@+id/fragment2"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        tools:layout="@layout/fragment_movie_detail" />
 </RelativeLayout>

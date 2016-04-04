@@ -39,8 +39,9 @@ public class MoviesGalleryFragment extends Fragment {
     RequestQueue requestQueue;
     MoviesGalleryAdapter moviesGalleryAdapter;
     public static String MOVIES_CACHE = "movies_cache";
-    Boolean isDescSort = true;
     Integer pageNo = 1;
+    Boolean isDescSort = true;
+    String sortBy = GlobalConstants.TMDB_PARAM_POPULARITY;
 
     public MoviesGalleryFragment() {
         // Required empty public constructor
@@ -89,8 +90,7 @@ public class MoviesGalleryFragment extends Fragment {
     private void loadMovies(int page, Boolean isDescSort) {
         String url = UriUtils.buildTMDBMovieUrl(
                 String.valueOf(page),
-                GlobalConstants.TMDB_PARAM_POPULARITY +
-                        (isDescSort ? GlobalConstants.TMDB_SORT_DESC : GlobalConstants.TMDB_SORT_ASC)
+                sortBy + (isDescSort ? GlobalConstants.TMDB_SORT_DESC : GlobalConstants.TMDB_SORT_ASC)
         );
         StringRequest request = new StringRequest(url,
                 new Response.Listener<String>() {
@@ -120,8 +120,31 @@ public class MoviesGalleryFragment extends Fragment {
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                loadMovies(pageNo, isChecked);
+                isDescSort = isChecked;
+                loadMovies(pageNo, isDescSort);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_sort_popular:
+                sortBy = GlobalConstants.TMDB_PARAM_POPULARITY;
+                break;
+            case R.id.action_sort_rating:
+                sortBy = GlobalConstants.TMDB_PARAM_VOTE_AVERAGE;
+                break;
+            case R.id.action_sort_release_date:
+                sortBy = GlobalConstants.TMDB_PARAM_RELEASE_DATE;
+                break;
+            case R.id.action_sort_votes_count:
+                sortBy = GlobalConstants.TMDB_PARAM_VOTE_COUNT;
+                break;
+        }
+        loadMovies(pageNo, isDescSort);
+
+        return super.onOptionsItemSelected(item);
     }
 }

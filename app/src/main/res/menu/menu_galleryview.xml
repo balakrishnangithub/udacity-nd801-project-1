@@ -6,4 +6,28 @@
         android:title=""
         app:actionLayout="@layout/sort_switch_layout"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_sort_popular"
+        android:orderInCategory="100"
+        android:title="Sort by Popularity"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sort_rating"
+        android:orderInCategory="101"
+        android:title="Sort by Rating"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sort_votes_count"
+        android:orderInCategory="102"
+        android:title="Sort by Vote Count"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_sort_release_date"
+        android:orderInCategory="102"
+        android:title="Sort by Release Date"
+        app:showAsAction="never" />
 </menu>

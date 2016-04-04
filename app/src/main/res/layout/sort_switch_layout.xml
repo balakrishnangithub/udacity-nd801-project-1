@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <!--TODO: add icon
+    http://stackoverflow.com/questions/32063487/image-set-as-background-of-toggle-button-is-stretched-android
+    -->
+    <ToggleButton
+        android:id="@+id/sortToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"
+        android:textOff="@string/ascending_sort"
+        android:textOn="@string/descending_sort" />
+</RelativeLayout>

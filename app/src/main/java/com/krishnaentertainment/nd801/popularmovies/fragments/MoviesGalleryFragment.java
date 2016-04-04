@@ -3,12 +3,18 @@ package com.krishnaentertainment.nd801.popularmovies.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.ToggleButton;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,9 +39,17 @@ public class MoviesGalleryFragment extends Fragment {
     RequestQueue requestQueue;
     MoviesGalleryAdapter moviesGalleryAdapter;
     public static String MOVIES_CACHE = "movies_cache";
+    Boolean isDescSort = true;
+    Integer pageNo = 1;
 
     public MoviesGalleryFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(isDescSort);
     }
 
     @Override
@@ -52,7 +66,7 @@ public class MoviesGalleryFragment extends Fragment {
         recyclerView.setAdapter(moviesGalleryAdapter);
 
         if (savedInstanceState == null)
-            loadMovies(1, true);
+            loadMovies(pageNo, true);
         else
             moviesGalleryAdapter.set(savedInstanceState.<Movie>getParcelableArrayList(MOVIES_CACHE));
         return root;
@@ -93,5 +107,21 @@ public class MoviesGalleryFragment extends Fragment {
                 });
         request.setTag(MoviesGalleryFragment.class);
         requestQueue.add(request);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_galleryview, menu);
+        MenuItem menuItem = menu.findItem(R.id.sortItem);
+        View view = MenuItemCompat.getActionView(menuItem);
+        ToggleButton toggleButton = (ToggleButton) view.findViewById(R.id.sortToggle);
+        toggleButton.setChecked(isDescSort);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                loadMovies(pageNo, isChecked);
+            }
+        });
     }
 }

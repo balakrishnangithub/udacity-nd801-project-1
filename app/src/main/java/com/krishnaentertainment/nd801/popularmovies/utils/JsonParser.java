@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class JsonParser {
     public static ArrayList<Movie> parseMoviesList(String jsonString) {
@@ -26,6 +27,9 @@ public class JsonParser {
                 movie.id = jsonObject.getInt(GlobalConstants.TMDB_PARAM_ID);
                 movie.title = jsonObject.getString(GlobalConstants.TMDB_PARAM_TITLE);
                 movie.posterPath = jsonObject.getString(GlobalConstants.TMDB_PARAM_POSTER_PATH);
+                // TMDB bug: older movies don't have images
+                if (Objects.equals(movie.posterPath, "null"))
+                    continue;
                 movie.backdropPath = jsonObject.getString(GlobalConstants.TMDB_PARAM_BACKDROP_PATH);
                 movie.overview = jsonObject.getString(GlobalConstants.TMDB_PARAM_OVERVIEW);
 

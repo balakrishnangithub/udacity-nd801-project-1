@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.krishnaentertainment.nd801.popularmovies.R;
 import com.krishnaentertainment.nd801.popularmovies.managers.VolleySingleton;
@@ -15,9 +16,10 @@ import com.krishnaentertainment.nd801.popularmovies.utils.UriUtils;
 import java.util.ArrayList;
 
 // TODO think about this http://stackoverflow.com/q/19721112/1753174
-public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdapter.ViewHolder> {
+public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdapter.CustomViewHolder> {
     private Context mContext;
     private ArrayList<Movie> mMoviesList;
+    private ImageLoader mImageLoader;
 
     public interface AdapterCallback {
         void onGalleryItemClick(Movie movie, View v);
@@ -25,6 +27,7 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
 
     public MoviesGalleryAdapter(Context mContext) {
         this.mContext = mContext;
+        mImageLoader = VolleySingleton.getInstance(mContext).getImageLoader();
     }
 
     public void set(ArrayList<Movie> movies) {
@@ -37,19 +40,19 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.gallery_movie_item, parent, false);
 
-        return new ViewHolder(itemView);
+        return new CustomViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(CustomViewHolder holder, int position) {
         Movie movie = mMoviesList.get(position);
         holder.posterImage.setImageUrl(
                 UriUtils.buildTMDBImageUrl(mContext.getResources().getString(R.string.tmdb_poster_size_gallery), movie.posterPath),
-                VolleySingleton.getInstance(mContext).getImageLoader());
+                mImageLoader);
     }
 
     @Override
@@ -57,10 +60,10 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
         return mMoviesList != null ? mMoviesList.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public NetworkImageView posterImage;
 
-        public ViewHolder(View view) {
+        public CustomViewHolder(View view) {
             super(view);
             posterImage = (NetworkImageView) view.findViewById(R.id.gallery_poster_item);
         }

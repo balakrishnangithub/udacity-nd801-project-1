@@ -20,7 +20,7 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
     private ArrayList<Movie> mMoviesList;
 
     public interface AdapterCallback {
-        void onAdapterItemClick(Movie movie, NetworkImageView posterImage, View v);
+        void onGalleryItemClick(Movie movie, View v);
     }
 
     public MoviesGalleryAdapter(Context mContext) {
@@ -68,7 +68,7 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
         @Override
         public void onClick(View v) {
             Movie movie = mMoviesList.get(getLayoutPosition());
-            ((AdapterCallback) mContext).onAdapterItemClick(movie, posterImage, v);
+            ((AdapterCallback) mContext).onGalleryItemClick(movie, v);
         }
     }
 }

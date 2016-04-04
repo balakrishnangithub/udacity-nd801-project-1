@@ -63,9 +63,10 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
     public class CustomViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public NetworkImageView posterImage;
 
-        public CustomViewHolder(View view) {
-            super(view);
-            posterImage = (NetworkImageView) view.findViewById(R.id.gallery_poster_item);
+        public CustomViewHolder(View itemView) {
+            super(itemView);
+            posterImage = (NetworkImageView) itemView.findViewById(R.id.gallery_poster_item);
+            itemView.setOnClickListener(this);
         }
 
         @Override

@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import com.android.volley.toolbox.NetworkImageView;
 import com.krishnaentertainment.nd801.popularmovies.R;
 import com.krishnaentertainment.nd801.popularmovies.managers.VolleySingleton;
-import com.krishnaentertainment.nd801.popularmovies.models.GlobalConstants;
 import com.krishnaentertainment.nd801.popularmovies.models.Movie;
 import com.krishnaentertainment.nd801.popularmovies.utils.UriUtils;
 
 import java.util.ArrayList;
 
+// TODO think about this http://stackoverflow.com/q/19721112/1753174
 public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<Movie> mMoviesList;
@@ -48,7 +48,7 @@ public class MoviesGalleryAdapter extends RecyclerView.Adapter<MoviesGalleryAdap
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie movie = mMoviesList.get(position);
         holder.posterImage.setImageUrl(
-                UriUtils.buildTMDBImageUrl(GlobalConstants.TMDB_LARGE_POSTER, movie.posterPath),
+                UriUtils.buildTMDBImageUrl(mContext.getResources().getString(R.string.tmdb_poster_size_gallery), movie.posterPath),
                 VolleySingleton.getInstance(mContext).getImageLoader());
     }
 

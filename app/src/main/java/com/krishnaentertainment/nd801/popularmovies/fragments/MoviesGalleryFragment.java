@@ -46,7 +46,7 @@ public class MoviesGalleryFragment extends Fragment {
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.movies_recycler_view);
         gridLayoutManager = new GridLayoutManager(getActivity(),
-                getActivity().getResources().getInteger(R.integer.number_of_columns));
+                getActivity().getResources().getInteger(R.integer.gallery_column));
         recyclerView.setLayoutManager(gridLayoutManager);
         moviesGalleryAdapter = new MoviesGalleryAdapter(getActivity());
         recyclerView.setAdapter(moviesGalleryAdapter);

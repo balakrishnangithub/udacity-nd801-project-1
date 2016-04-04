@@ -6,9 +6,6 @@ public class GlobalConstants {
     public static final String TMDB_SORT_DESC = ".desc";
     public static final String TMDB_SORT_ASC = ".asc";
 
-    public final static String TMDB_LARGE_POSTER = "w342"; // gallery view
-    public final static String TMDB_SMALL_POSTER = "w185"; // detail view
-
     public static final String TMDB_PARAM_PAGE = "page";
     public static final String TMDB_PARAM_API_KEY = "api_key";
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="gallery_column">2</integer>
+    <string name="tmdb_poster_size_gallery">w780</string>
+    <string name="tmdb_poster_size_detail">w185</string>
+</resources>

@@ -1,56 +1,61 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.krishnaentertainment.nd801.popularmovies.fragments.MovieDetailFragment">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/backdropImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.krishnaentertainment.nd801.popularmovies.fragments.MovieDetailFragment">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/backdropImage"
-        android:text="Close Encounter of Third Kind"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/backdropImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/releaseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" (Jan 6 1991)"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_below="@+id/title"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:id="@+id/movieTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/backdropImage"
+            android:text="Close Encounter of Third Kind"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
-        android:id="@+id/voteAverage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/releaseDate"
-        android:text="7.5★"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+            android:id="@+id/releaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/movieTitle"
+            android:text=" (Jan 6 1991)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
-        android:id="@+id/voteCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/voteAverage"
-        android:layout_toEndOf="@+id/voteAverage"
-        android:text="(46034)"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        <TextView
+            android:id="@+id/voteAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/releaseDate"
+            android:text="7.5★"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/voteAverage"
-        android:layout_centerHorizontal="true"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed feugiat magna. Duis rhoncus feugiat finibus. Suspendisse mollis lacus lectus, sed mollis dolor semper at. Nam vestibulum massa id felis consectetur, ut egestas mi auctor. Maecenas at augue cursus, cursus nisl et, feugiat neque." />
+        <TextView
+            android:id="@+id/voteCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/voteAverage"
+            android:layout_toEndOf="@id/voteAverage"
+            android:text="(46034)"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/voteAverage"
+            android:layout_centerHorizontal="true"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sed feugiat magna. Duis rhoncus feugiat finibus." />
+
+    </RelativeLayout>
+</ScrollView>

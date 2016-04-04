@@ -4,4 +4,5 @@
     <integer name="gallery_column">3</integer>
     <string name="tmdb_poster_size_gallery">w342</string>
     <string name="tmdb_poster_size_detail">w185</string>
+    <string name="tmdb_backdrop_size_detail">w780</string>
 </resources>

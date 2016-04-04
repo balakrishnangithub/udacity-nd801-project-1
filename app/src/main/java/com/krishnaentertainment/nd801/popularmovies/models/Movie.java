@@ -26,7 +26,7 @@ public class Movie implements Parcelable {
         posterPath = in.readString();
         backdropPath = in.readString();
         overview = in.readString();
-        releaseDate.setTime(in.readLong());
+        releaseDate = new Date(in.readLong());
         popularity = in.readDouble();
         voteAverage = in.readDouble();
         voteCount = in.readInt();

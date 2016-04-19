@@ -1,8 +1,10 @@
 package com.krishnaentertainment.nd801.popularmovies.models;
 
+import android.net.Uri;
+
 public class GlobalConstants {
-    public static final String TMDB_MOVIE_BASE_URL = "http://api.themoviedb.org/3/discover/movie";
-    public static final String TMDB_IMAGE_BASE_URL = "http://image.tmdb.org/t/p/";
+    public static final Uri TMDB_MOVIE_BASE_URL = Uri.parse("http://api.themoviedb.org/3/discover/movie");
+    public static final Uri TMDB_IMAGE_BASE_URL = Uri.parse("http://image.tmdb.org/t/p/");
     public static final String TMDB_SORT_DESC = ".desc";
     public static final String TMDB_SORT_ASC = ".asc";
 
